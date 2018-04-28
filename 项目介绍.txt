@@ -1,0 +1,48 @@
+NetEFDemo介绍：
+
+1. 三层架构实现层与层之间的解耦，更换业务层或数据层DLL（类库）只需配置映射的命名空间即可；
+2. 通过工厂模式来Ioc控制反转（DIP依赖注入）及反射(映射)加载DLL；
+
+//UI层调用BLL业务逻辑层：
+private static IUserBLL userBll = new Factory<Users>().CreateBLL<IUserBLL>("UserBLL");
+
+//业务逻辑层调用数据层：
+private static IUserDAL dal = new Factory<Users>().CreateDAL<IUserDAL>("UserDAL");
+
+
+//工厂采用泛型传入类型 
+/// <summary>
+/// 数据访问类泛型工厂
+/// </summary>
+/// <typeparam name="T"> Factory<T> 需要操作的 Model实体类型</typeparam>
+public class Factory<TEntity>
+{
+    //BLL
+    private static string BLL_NameSpace = ConfigurationManager.AppSettings["BLL_NameSpace"];  //Web.config:  <add key="BLL_NameSpace" value="Test.BLL"/>
+    public T CreateBLL<T>(string className)
+    {
+        Assembly assembly = Assembly.Load(BLL_NameSpace);  // BLL_NameSpace:Test.BLL
+        Type type = assembly.GetType(BLL_NameSpace + "." + className); 
+        //Console.WriteLine(type);
+        return (T)Activator.CreateInstance(type);  // type:Test.BLL.UserBLLL
+    }
+
+
+    //DAL
+    private string DAL_NameSpace = ConfigurationManager.AppSettings["DAL_NameSpace"];    //Web.config: <add key="DAL_NameSpace" value="Test.DAL"/> 
+    public T CreateDAL<T>(string className)
+    {
+        Assembly assembly = Assembly.Load(DAL_NameSpace);    // DAL_NameSpace:Test.DAL
+        Type type = assembly.GetType(DAL_NameSpace + "." + className);  
+        //Console.WriteLine(type);
+        return (T)Activator.CreateInstance(type);    // type:Test.DAL.UserDAL
+    }
+}
+
+
+IBaseBLL IBaseDAl 定义父类接口：CRUD
+IUserBLL IUserDAL...继承父类接口,定义详细接口；
+
+ BaseBLL BaseDAL 实现父类接口方法：CRUD 
+ UserBLL UserDAL...继承父类接口,实现详细方法；
+

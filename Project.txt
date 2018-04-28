@@ -1,0 +1,23 @@
+一、说明
+
+00 Libs 第三方引用DLL 如：Log4net 等
+
+01 Command 共公类     如：加密、解密、 配置类等
+
+02 DoMainMode 存放 EF生成:        
+                        01.Model        实体
+                        02.Mapping      实体表映射
+                        03.DbContext    DbContext
+    
+03 CacheBLL 数据缓存 实现数据缓存与更新缓存业务（添加、删除、修改）
+04 BLL 业务层实现业务逻辑功能 为Service 提供调用        
+01 BLL      业务
+02 BLLTest  业务测试
+
+05 Service 服务层 Webservice/WCF 为数据应用业务系统提供数据功能，实现业务系统与数据库分离
+         01 WebService/WCF 
+02 ServiceTest
+  
+06 UI 应用业务系统
+            01 后台管理系统 (ASP.NET MVC )
+            02 前台业务系统 (ASP.NET MVC)
