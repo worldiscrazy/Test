@@ -40,9 +40,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CryptHelper\AESCrypt.cs" />
+    <Compile Include="CryptHelper\DESCrypt.cs" />
+    <Compile Include="CryptHelper\DESEncrypt.cs" />
+    <Compile Include="CryptHelper\HashCode.cs" />
+    <Compile Include="CryptHelper\RSACryption.cs" />
     <Compile Include="DataValidateExtend.cs" />
     <Compile Include="EmptyAttribute.cs" />
+    <Compile Include="EnumsClass.cs" />
+    <Compile Include="JsonHelper\AjaxResult.cs" />
+    <Compile Include="JsonHelper\JsonConverter.cs" />
+    <Compile Include="JsonHelper\JsonHelper.cs" />
+    <Compile Include="JsonHelper\JsonSplit.cs" />
+    <Compile Include="Log4NetHelper\ExtLogImpl.cs" />
+    <Compile Include="Log4NetHelper\ExtLogManager.cs" />
+    <Compile Include="Log4NetHelper\IExtLog.cs" />
+    <Compile Include="PageCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringHelper\ConvertHzToPz.cs" />
+    <Compile Include="ToolsHelper\FileHelper.cs" />
+    <Compile Include="ToolsHelper\PredicateBuilder.cs" />
+    <Compile Include="ToolsHelper\RegexHelper.cs" />
+    <Compile Include="ToolsHelper\Tools.cs" />
+    <Compile Include="ToolsHelper\Utils.cs" />
+    <Compile Include="ToolsHelper\ZipHelper.cs" />
+    <Compile Include="WebHelper\CookieHelper.cs" />
+    <Compile Include="WebHelper\SessionHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
