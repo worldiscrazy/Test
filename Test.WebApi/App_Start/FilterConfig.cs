@@ -10,6 +10,7 @@ namespace Test.WebApi
         {
             //全局注册
             filters.Add(new CustomAuthorizeAttribute("~/Home/Refuse"));
+            filters.Add(new CustomActionFilterAttribute());
             filters.Add(new CustomHandleErrorAttribute());
 
         }
